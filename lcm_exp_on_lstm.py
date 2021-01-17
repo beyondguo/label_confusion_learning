@@ -61,13 +61,13 @@ for content,y in zip(list(df.content),list(df.label)):
     content_words = content.split(' ')
     # Chinese:
     # content_words = jieba.lcut(content)
-    corpus += content_wordscorpus,vocab_size=vocab_size)
-X = text2idx(tokenizer,X_words,maxlen=maxlen)
-y = np.array(Y)
+    corpus += content_words
     X_words.append(content_words)
     Y.append(label2idx[y])
 
-tokenizer, word_index, freq_word_index = fit_corpus(
+tokenizer, word_index, freq_word_index = fit_corpus(corpus,vocab_size=vocab_size)
+X = text2idx(tokenizer,X_words,maxlen=maxlen)
+y = np.array(Y)
 
 
 
