@@ -130,7 +130,7 @@ class LSTM_LCM_dynamic:
         self.num_classes = num_classes
 
         def lcm_loss(y_true,y_pred,alpha=alpha):
-            pred_porbs = y_pred[:,:num_classes]
+            pred_probs = y_pred[:,:num_classes]
             label_sim_dist = y_pred[:,num_classes:]
             simulated_y_true = K.softmax(label_sim_dist+alpha*y_true)
             loss1 = -K.categorical_crossentropy(simulated_y_true,simulated_y_true)
@@ -239,7 +239,7 @@ class LSTM_LCM_dynamic:
 #         self.num_classes = num_classes
 #
 #         def lcm_loss(y_true, y_pred, alpha=alpha):
-#             pred_porbs = y_pred[:, :num_classes]
+#             pred_probs = y_pred[:, :num_classes]
 #             label_sim_dist = y_pred[:, num_classes:]
 #             simulated_y_true = K.softmax(label_sim_dist + alpha * y_true)
 #             loss1 = -K.categorical_crossentropy(simulated_y_true, simulated_y_true)
